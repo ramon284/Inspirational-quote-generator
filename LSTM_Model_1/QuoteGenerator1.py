@@ -8,7 +8,7 @@ import time
 
 
 # Read, then decode for py2 compat.
-text = open("quotes_only_text.txt", 'rb').read().decode(encoding='utf-8')
+text = open("/Users/sethvanderbijl/Quote_Generation/MachineLearningVu/Data/Temp Data/quotes_only_text.txt", 'rb').read().decode(encoding='utf-8')
 text = text.replace("\n", "   ")
 # length of text is the number of characters in it
 print('Length of text: {} characters'.format(len(text)))

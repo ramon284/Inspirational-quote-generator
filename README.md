@@ -12,7 +12,7 @@ Tutorial: [Tensorflow LSTM Text Generation](https://www.tensorflow.org/tutorials
 
 **Notes:** Costumized training section of this tutorial is not incorporated.
 
-**Current ETA:** 1 hour (2019 MacBook i7 CPU)
+**Current ETA:** 16 hours for 20 epochs (2019 MacBook i7 CPU)
 
 **Some Predictions:** -
 
