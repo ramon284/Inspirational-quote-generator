@@ -9,6 +9,8 @@ count = data.groupby(['GENRE']).count()
 count=count.reset_index()
 count.to_csv ('genreCount.csv', index = False, header=True)
 
+Counter(" ".join(data['QUOTE']).split()).most_common(100) ## counts 100 most common words
+
 
 
 
