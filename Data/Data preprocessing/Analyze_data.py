@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-data = pd.read_csv('output.csv')
+from collections import Counter
+data = pd.read_csv('QuotesFiltered.csv')
 pd.set_option('display.max_rows', None)
 
 
@@ -9,7 +10,12 @@ count = data.groupby(['GENRE']).count()
 count=count.reset_index()
 count.to_csv ('genreCount.csv', index = False, header=True)
 
-Counter(" ".join(data['QUOTE']).split()).most_common(100) ## counts 100 most common words
+wordCount = Counter(" ".join(data['QUOTE']).split()).most_common(500)
+temp = pd.DataFrame(wordCount)
+temp.columns = ['word','count']
+print(temp)
+temp.to_csv('wordCount.csv', index = False, header = True)
+
 
 
 
