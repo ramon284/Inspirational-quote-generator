@@ -5,7 +5,7 @@ Tutorial: [Tensorflow Text Generation](https://www.tensorflow.org/tutorials/text
 
 **Language Representation:** Tokenisation of characters
 
-**Quotes Representation:** Concatination into large continious text
+**Quotes Representation:** Concatenated into large continious text
 
 **Description:** This model currently uses all quotes as if it would be one big continuous text. Of course the quotes are separate contextual self-contained entities and not part of a continuous text. I.e. one quote has nothing to do with the next one. Currently not shuffling the quotes as a temporary solution to mitigate this. When all quotes about age are together and not shuffled at least the context in the big text is somewhat more appropriate. Have to link into how to provide data as separate self-contained text snippets. Will submit trained model after finished training.
 
@@ -13,16 +13,20 @@ Tutorial: [Tensorflow Text Generation](https://www.tensorflow.org/tutorials/text
 
 **Current ETA:** 1 hour (2019 MacBook i7 CPU)
 
+**Some Predictions:** -
+
 
 ## [Model 2](LSTM_Model_2/QuoteGenerator2.py)
 Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/beginners-guide-to-text-generation-using-lstms)
 
 **Language Representation:** Tokenisation of words
 
-**Quotes Representation:** -
+**Quotes Representation:** Separate text sequences
 
 **Description:** Unfinished work in progress
 
 **Notes:** -
 
 **Current ETA:** -
+
+**Some Predictions:** -
