@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#Annoying hidden Mac Systems files
+.DS_Store
+*.DS_Store
