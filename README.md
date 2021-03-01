@@ -14,8 +14,6 @@ Tutorial: [Tensorflow Text Generation](https://www.tensorflow.org/tutorials/text
 **Current ETA:** 1 hour (2019 MacBook i7 CPU)
 
 
-# MachineLearningVu
-
 ## [Model 2](LSTM_Model_2/QuoteGenerator2.py)
 Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/beginners-guide-to-text-generation-using-lstms)
 
