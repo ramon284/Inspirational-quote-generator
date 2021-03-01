@@ -1,7 +1,8 @@
 # MachineLearningVu
 
 ## [Model 1](LSTM_Model_1/QuoteGenerator1.py)
-Tutorial: [Tensorflow Text Generation](https://www.tensorflow.org/tutorials/text/text_generation)
+Tutorial: [Tensorflow LSTM Text Generation](https://www.tensorflow.org/tutorials/text/text_generation)
+*Note: Tensorflow has multiple different text generation tutorials*
 
 **Language Representation:** Tokenisation of characters
 
