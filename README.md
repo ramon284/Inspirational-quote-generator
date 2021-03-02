@@ -16,6 +16,20 @@ Tutorial: [Tensorflow LSTM Text Generation](https://www.tensorflow.org/tutorials
 
 **Some Predictions:** -
 
+**Mode Summary:** 
+
+|Layer (type)     |            Output Shape |             Param #   |
+| ------------- |:-------------:| -----:|
+embedding (Embedding)     |   multiple       |           21248     
+gru (GRU)      |              multiple       |           3938304   
+dense (Dense)      |          multiple      |            85075     
+
+Total params: 4,044,627
+
+Trainable params: 4,044,627
+
+Non-trainable params: 0
+
 
 ## [Model 2](LSTM_Model_2/QuoteGenerator2.py)
 Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/beginners-guide-to-text-generation-using-lstms)
