@@ -137,11 +137,15 @@ model = MyModel(
     embedding_dim=embedding_dim,
     rnn_units=rnn_units)
 
+# Need to reload wieghts from checkpoint!!
+
 for input_example_batch, target_example_batch in dataset.take(1):
     example_batch_predictions = model(input_example_batch)
     print(example_batch_predictions.shape, "# (batch_size, sequence_length, vocab_size)")
 
 model.summary()
+
+
 
 sampled_indices = tf.random.categorical(example_batch_predictions[0], num_samples=1)
 sampled_indices = tf.squeeze(sampled_indices,axis=-1).numpy()
@@ -168,13 +172,23 @@ checkpoint_dir = './training_checkpoints'
 # Name of the checkpoint files
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
+latest = tf.train.latest_checkpoint(checkpoint_dir)
+model.load_weights(latest)
+
 checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_prefix,
     save_weights_only=True)
 
 EPOCHS = 20
 
-history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
+# fit the model
+# checkpoint = ModelCheckpoint(checkpoint_prefix, monitor='loss', verbose=1, save_best_only=True, mode='min')
+# callbacks_list = [checkpoint]
+history = model.fit(dataset, epochs=5, callbacks=[checkpoint_callback])
+# history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
+
+loss, acc = model.evaluate(dataset, verbose=2)
+print(loss, acc)
 
 class OneStep(tf.keras.Model):
     def __init__(self, model, chars_from_ids, ids_from_chars, temperature=1.0):
