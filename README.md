@@ -38,7 +38,7 @@ Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/begi
 
 **Quotes Representation:** Separate text sequences
 
-**Description:** Unfinished work in progress
+**Description:** Unfinished work in progress. Current problem: LSTM to heavy to train on laptop. So porting to google Colab. Colab has to little RAM to do the sequence padding. Trying to pad on laptop, save data and open this data to train an LSTM in Colab.
 
 **Notes:** -
 

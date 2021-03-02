@@ -83,6 +83,7 @@ def generate_padded_sequences(input_sequences):
     return predictors, label, max_sequence_len
 
 predictors, label, max_sequence_len = generate_padded_sequences(inp_sequences)
+print(predictors, label, max_sequence_len)
 
 # #4. Model
 def create_model(max_sequence_len, total_words):
@@ -107,19 +108,19 @@ model = create_model(max_sequence_len, total_words)
 model.summary()
 
 # #Train the Model
-# model.fit(predictors, label, epochs=100, verbose=5)
+model.fit(predictors, label, epochs=20, verbose=5)
 
 # #5. Generating texts
-# def generate_text(seed_text, next_words, model, max_sequence_len):
-#     for _ in range(next_words):
-#         token_list = tokenizer.texts_to_sequences([seed_text])[0]
-#         token_list = pad_sequences([token_list], maxlen=max_sequence_len-1, padding='pre')
-#         predicted = model.predict_classes(token_list, verbose=0)
+def generate_text(seed_text, next_words, model, max_sequence_len):
+    for _ in range(next_words):
+        token_list = tokenizer.texts_to_sequences([seed_text])[0]
+        token_list = pad_sequences([token_list], maxlen=max_sequence_len-1, padding='pre')
+        predicted = model.predict_classes(token_list, verbose=0)
         
-#         output_word = ""
-#         for word,index in tokenizer.word_index.items():
-#             if index == predicted:
-#                 output_word = word
-#                 break
-#         seed_text += " "+output_word
-#     return seed_text.title()
+        output_word = ""
+        for word,index in tokenizer.word_index.items():
+            if index == predicted:
+                output_word = word
+                break
+        seed_text += " "+output_word
+    return seed_text.title()
