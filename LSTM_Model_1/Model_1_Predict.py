@@ -169,25 +169,15 @@ model.compile(optimizer='adam', loss=loss)
 # Directory where the checkpoints will be saved
 checkpoint_dir = './training_checkpoints'
 # Name of the checkpoint files
-checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_session2_{epoch}")
+checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
 latest = tf.train.latest_checkpoint(checkpoint_dir)
 model.load_weights(latest)
 
-checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
-    filepath=checkpoint_prefix,
-    save_weights_only=True)
+# checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+#     filepath=checkpoint_prefix,
+#     save_weights_only=True)
 
-EPOCHS = 20
-
-# fit the model
-# checkpoint = ModelCheckpoint(checkpoint_prefix, monitor='loss', verbose=1, save_best_only=True, mode='min')
-# callbacks_list = [checkpoint]
-history = model.fit(dataset, epochs=5, callbacks=[checkpoint_callback])
-# history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
-
-loss, acc = model.evaluate(dataset, verbose=2)
-print(loss, acc)
 
 class OneStep(tf.keras.Model):
     def __init__(self, model, chars_from_ids, ids_from_chars, temperature=1.0):
@@ -237,7 +227,7 @@ one_step_model = OneStep(model, chars_from_ids, ids_from_chars)
 
 start = time.time()
 states = None
-next_char = tf.constant(['Life is'])
+next_char = tf.constant(['ROMEO:'])
 result = [next_char]
 
 for n in range(1000):
