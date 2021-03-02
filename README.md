@@ -16,7 +16,7 @@ Tutorial: [Tensorflow LSTM Text Generation](https://www.tensorflow.org/tutorials
 
 **Some Predictions:** -
 
-**Mode Summary:** 
+**Model Summary:** 
 
 |Layer (type)     |            Output Shape |             Param #   |
 | ------------- |:-------------:| -----:|
@@ -45,3 +45,15 @@ Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/begi
 **Current ETA:** -
 
 **Some Predictions:** -
+
+**Model Summary:**
+
+ |Layer (type)    |             Output Shape      |        Param #   |
+ | ------------- |:-------------:| -----:|
+|embedding (Embedding)     |   (None, 89, 10)        |    340550    |
+|lstm (LSTM)                |  (None, 100)           |    44400     |
+|dropout (Dropout)          |  (None, 100)            |   0         |
+|dense (Dense)              |  (None, 34055)          |   3439555   |
+Total params: 3,824,505
+Trainable params: 3,824,505
+Non-trainable params: 0
