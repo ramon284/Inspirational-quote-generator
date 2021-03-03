@@ -25,7 +25,7 @@ quotesWithGenre.drop_duplicates('QUOTE', inplace=True)
 print(quotesWithGenre.shape)
 
 
-quotesWithGenre.to_csv ('QuotesFiltered.csv', index = False, header=True)
+quotesWithGenre.to_csv ('QuotesFiltered.csv', sep=";", index = False, header=True)
 
 
 
