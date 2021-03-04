@@ -27,13 +27,17 @@ quotes_df = pd.read_csv("/Users/sethvanderbijl/Coding Projects/MachineLearningVu
 
 quotes_column = quotes_df["QUOTE"]
 
+quotes_column = quotes_column.head(20000)
+
 all_quotes.extend(list(quotes_column.values))
 
-       
+
 
 all_quotes = [h for h in all_quotes if h != "Unknown"]
 print(len(all_quotes))
 
+del quotes_df
+del quotes_column
 
 def clean_text(txt):
     txt = "".join(v for v in txt if v not in string.punctuation).lower()
@@ -71,6 +75,8 @@ def get_sequence_of_tokens(corpus):
     return input_sequences, total_words
 
 inp_sequences, total_words = get_sequence_of_tokens(corpus)
+
+print("total words:",total_words)
 print("\n\n We now have", len(inp_sequences), "Input sequences. First input sequences: \n",inp_sequences[:10])
 
 # #3.3 Padding the Sequences and obtaining variables
@@ -83,14 +89,22 @@ def generate_padded_sequences(input_sequences):
     return predictors, label, max_sequence_len
 
 predictors, label, max_sequence_len = generate_padded_sequences(inp_sequences)
-print(label, type(label), label[0],type(label[0]))
+print(label, type(label), label[0],type(label[0]), label.dtype, label[0].dtype)
+
+print("eln",len(label))
+arr = np.array(label[0])
+
+all_labels = []
+index = 0
+for vector in label:
+    all_labels.append(vector)
 
 # del predictors
 # del max_sequence_len
 # del inp_sequences
 
-with open('labels.npy', 'wb') as f:
-    np.save(f, label)
+with open('all_labels.npy', 'wb') as f:
+    np.save(f, all_labels)
 
 
 # #4. Model

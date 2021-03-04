@@ -134,3 +134,4 @@ dmypy.json
 
 #pickles, can be huge
 *.pkl
+*.npy
