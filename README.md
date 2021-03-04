@@ -12,7 +12,7 @@ Tutorial: [Tensorflow LSTM Text Generation](https://www.tensorflow.org/tutorials
 
 **Notes:** Costumized training section of this tutorial is not incorporated.
 
-**Current ETA:** 16 hours for 20 epochs (2019 MacBook i7 CPU)
+**Current ETA:** 16 hours for 20 epochs (2019 MacBook i7 CPU), 1.5 hour for 20 epochs on Colab Nvidia Tesla k-80
 
 **Some Predictions:** (15 Epochs) there's shall out of school where I started picketless.   Why not some of us seem to have a work of friends who tell you how terrible uncommon streesed view ideas of the governance - always everything. It needs to have to leave the world for meaningformed tools of life: the wind bllower and the Christmas playth the Republican Party.   I was always unstability, even if they must eat were the right, to the risks, but around the Christmas land, when the experience of most vegetables that meant you by the greatest politicians without get institcted, seriously. If a success is living nobody, you want more focus it's just loved to go to the seemed.   But the feminine genier where we ever have a Christmas relationship in one through alcoholics, and the Christmas Christmas.   Hate and low Mock or Here I passed out, so I can still have a Christmas skin or set and be as staying in investments. What do I'd have fone the Christmas, everyone is commonshing, candred, and to tell you: my generation
 
@@ -38,7 +38,7 @@ Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/begi
 
 **Quotes Representation:** Separate text sequences
 
-**Description:** Unfinished work in progress. Current problem: LSTM to heavy to train on laptop. So porting to google Colab. Colab has to little RAM to do the sequence padding. Trying to pad on laptop, save data and open this data to train an LSTM in Colab.
+**Description:** Unfinished work in progress. Can't fit whole dataset at once into the model.
 
 **Notes:** -
 
