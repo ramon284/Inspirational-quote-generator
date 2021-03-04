@@ -1,9 +1,8 @@
 import pandas as pd
 import numpy as np
 from collections import Counter
-data = pd.read_csv('QuotesFiltered.csv')
+data = pd.read_csv('QuotesFiltered.csv', sep=";")
 pd.set_option('display.max_rows', None)
-
 
 count = data.groupby(['GENRE']).count() 
 #pd.set_option('display.max_rows', None) # to print all rows at once.
@@ -15,6 +14,8 @@ temp = pd.DataFrame(wordCount)
 temp.columns = ['word','count']
 print(temp)
 temp.to_csv('wordCount.csv', index = False, header = True)
+
+
 
 
 
