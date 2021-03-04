@@ -23,7 +23,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 #2. Load the dataset
 all_quotes = []
-quotes_df = pd.read_csv("/Users/sethvanderbijl/Quote_Generation/MachineLearningVu/Data/Data preprocessing/QuotesFiltered.csv", sep=",")
+quotes_df = pd.read_csv("/Users/sethvanderbijl/Coding Projects/MachineLearningVu/Data/Data preprocessing/QuotesFiltered.csv", sep=";")
 
 quotes_column = quotes_df["QUOTE"]
 
@@ -83,44 +83,52 @@ def generate_padded_sequences(input_sequences):
     return predictors, label, max_sequence_len
 
 predictors, label, max_sequence_len = generate_padded_sequences(inp_sequences)
-print(predictors, label, max_sequence_len)
+print(label, type(label), label[0],type(label[0]))
+
+# del predictors
+# del max_sequence_len
+# del inp_sequences
+
+with open('labels.npy', 'wb') as f:
+    np.save(f, label)
+
 
 # #4. Model
-def create_model(max_sequence_len, total_words):
-    input_len = max_sequence_len - 1
-    model = Sequential()
+# def create_model(max_sequence_len, total_words):
+#     input_len = max_sequence_len - 1
+#     model = Sequential()
     
-    # Add Input Embedding Layer
-    model.add(Embedding(total_words, 10, input_length=input_len))
+#     # Add Input Embedding Layer
+#     model.add(Embedding(total_words, 10, input_length=input_len))
     
-    # Add Hidden Layer 1 - LSTM Layer
-    model.add(LSTM(100))
-    model.add(Dropout(0.1))
+#     # Add Hidden Layer 1 - LSTM Layer
+#     model.add(LSTM(100))
+#     model.add(Dropout(0.1))
     
-    # Add Output Layer
-    model.add(Dense(total_words, activation='softmax'))
+#     # Add Output Layer
+#     model.add(Dense(total_words, activation='softmax'))
 
-    model.compile(loss='categorical_crossentropy', optimizer='adam')
+#     model.compile(loss='categorical_crossentropy', optimizer='adam')
     
-    return model
+#     return model
 
-model = create_model(max_sequence_len, total_words)
-model.summary()
+# model = create_model(max_sequence_len, total_words)
+# model.summary()
 
-# #Train the Model
-model.fit(predictors, label, epochs=20, verbose=5)
+# # #Train the Model
+# model.fit(predictors, label, epochs=20, verbose=5)
 
-# #5. Generating texts
-def generate_text(seed_text, next_words, model, max_sequence_len):
-    for _ in range(next_words):
-        token_list = tokenizer.texts_to_sequences([seed_text])[0]
-        token_list = pad_sequences([token_list], maxlen=max_sequence_len-1, padding='pre')
-        predicted = model.predict_classes(token_list, verbose=0)
+# # #5. Generating texts
+# def generate_text(seed_text, next_words, model, max_sequence_len):
+#     for _ in range(next_words):
+#         token_list = tokenizer.texts_to_sequences([seed_text])[0]
+#         token_list = pad_sequences([token_list], maxlen=max_sequence_len-1, padding='pre')
+#         predicted = model.predict_classes(token_list, verbose=0)
         
-        output_word = ""
-        for word,index in tokenizer.word_index.items():
-            if index == predicted:
-                output_word = word
-                break
-        seed_text += " "+output_word
-    return seed_text.title()
+#         output_word = ""
+#         for word,index in tokenizer.word_index.items():
+#             if index == predicted:
+#                 output_word = word
+#                 break
+#         seed_text += " "+output_word
+#     return seed_text.title()

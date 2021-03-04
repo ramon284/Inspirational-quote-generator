@@ -131,3 +131,6 @@ dmypy.json
 #Annoying hidden Mac Systems files
 .DS_Store
 *.DS_Store
+
+#pickles, can be huge
+*.pkl
