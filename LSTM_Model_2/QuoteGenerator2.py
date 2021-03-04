@@ -91,23 +91,18 @@ def generate_padded_sequences(input_sequences):
 predictors, label, max_sequence_len = generate_padded_sequences(inp_sequences)
 print(label, type(label), label[0],type(label[0]), label.dtype, label[0].dtype)
 
-# print("eln",len(label))
-# arr = np.array(label[0])
+print("eln",len(label))
 
-# all_labels = []
-# index = 0
-# for vector in label:
-#     all_labels.append(vector)
 
-# # del predictors
-# # del max_sequence_len
-# # del inp_sequences
+# del predictors
+# del max_sequence_len
+# del inp_sequences
 
-# with open('all_labels.npy', 'wb') as f:
-#     np.save(f, all_labels)
+with open('all_labels.npy', 'wb') as f:
+    np.save(f, label)
 
-# with open('predictors.npy', 'wb') as f:
-#     np.save(f, predictors)
+with open('predictors.npy', 'wb') as f:
+    np.save(f, predictors)
 
 
 #4. Model
@@ -132,8 +127,20 @@ def create_model(max_sequence_len, total_words):
 model = create_model(max_sequence_len, total_words)
 model.summary()
 
-# #Train the Model
-model.fit(predictors, label, epochs=20, verbose=1)
+# Directory where the checkpoints will be saved
+checkpoint_dir = './training_checkpoints_model_2'
+# Name of the checkpoint files
+checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_model2_{epoch}")
+
+latest = tf.train.latest_checkpoint(checkpoint_dir)
+model.load_weights(latest)
+
+checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+    filepath=checkpoint_prefix,
+    save_weights_only=True)
+
+# # #Train the Model
+model.fit(predictors, label, epochs=20, verbose=1, callbacks=[checkpoint_callback])
 
 # # #5. Generating texts
 # def generate_text(seed_text, next_words, model, max_sequence_len):

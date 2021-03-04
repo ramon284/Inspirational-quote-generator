@@ -4,7 +4,7 @@
 Tutorial: [Tensorflow LSTM Text Generation](https://www.tensorflow.org/tutorials/text/text_generation)
 *Note: Tensorflow has multiple different text generation tutorials*
 
-**Language Representation:** Tokenisation of characters
+**Language Representation:** Tokenisation of characters. Output by one-hot vector of characters.
 
 **Quotes Representation:** Concatenated into large continious text
 
@@ -34,7 +34,7 @@ Non-trainable params: 0
 ## [Model 2](LSTM_Model_2/QuoteGenerator2.py)
 Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/beginners-guide-to-text-generation-using-lstms)
 
-**Language Representation:** Tokenisation of words, internal embedding of words
+**Language Representation:** Tokenisation of words, internal embedding of words. Output by one-hot vector of words. 
 
 **Quotes Representation:** Separate text sequences
 
