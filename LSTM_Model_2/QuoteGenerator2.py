@@ -27,7 +27,7 @@ quotes_df = pd.read_csv("/Users/sethvanderbijl/Coding Projects/MachineLearningVu
 
 quotes_column = quotes_df["QUOTE"]
 
-quotes_column = quotes_column.head(20000)
+quotes_column = quotes_column.head(2000)
 
 all_quotes.extend(list(quotes_column.values))
 
@@ -91,46 +91,49 @@ def generate_padded_sequences(input_sequences):
 predictors, label, max_sequence_len = generate_padded_sequences(inp_sequences)
 print(label, type(label), label[0],type(label[0]), label.dtype, label[0].dtype)
 
-print("eln",len(label))
-arr = np.array(label[0])
+# print("eln",len(label))
+# arr = np.array(label[0])
 
-all_labels = []
-index = 0
-for vector in label:
-    all_labels.append(vector)
+# all_labels = []
+# index = 0
+# for vector in label:
+#     all_labels.append(vector)
 
-# del predictors
-# del max_sequence_len
-# del inp_sequences
+# # del predictors
+# # del max_sequence_len
+# # del inp_sequences
 
-with open('all_labels.npy', 'wb') as f:
-    np.save(f, all_labels)
+# with open('all_labels.npy', 'wb') as f:
+#     np.save(f, all_labels)
+
+# with open('predictors.npy', 'wb') as f:
+#     np.save(f, predictors)
 
 
-# #4. Model
-# def create_model(max_sequence_len, total_words):
-#     input_len = max_sequence_len - 1
-#     model = Sequential()
+#4. Model
+def create_model(max_sequence_len, total_words):
+    input_len = max_sequence_len - 1
+    model = Sequential()
     
-#     # Add Input Embedding Layer
-#     model.add(Embedding(total_words, 10, input_length=input_len))
+    # Add Input Embedding Layer
+    model.add(Embedding(total_words, 10, input_length=input_len))
     
-#     # Add Hidden Layer 1 - LSTM Layer
-#     model.add(LSTM(100))
-#     model.add(Dropout(0.1))
+    # Add Hidden Layer 1 - LSTM Layer
+    model.add(LSTM(100))
+    model.add(Dropout(0.1))
     
-#     # Add Output Layer
-#     model.add(Dense(total_words, activation='softmax'))
+    # Add Output Layer
+    model.add(Dense(total_words, activation='softmax'))
 
-#     model.compile(loss='categorical_crossentropy', optimizer='adam')
+    model.compile(loss='categorical_crossentropy', optimizer='adam')
     
-#     return model
+    return model
 
-# model = create_model(max_sequence_len, total_words)
-# model.summary()
+model = create_model(max_sequence_len, total_words)
+model.summary()
 
-# # #Train the Model
-# model.fit(predictors, label, epochs=20, verbose=5)
+# #Train the Model
+model.fit(predictors, label, epochs=20, verbose=1)
 
 # # #5. Generating texts
 # def generate_text(seed_text, next_words, model, max_sequence_len):
