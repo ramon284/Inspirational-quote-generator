@@ -64,7 +64,10 @@ Tutorial: [Generating Quotes using LSTM](https://www.kaggle.com/hariharanhd/gene
 
 **Language Representation:** Tokenization of words. Uses the current sentence as input, next word as label which is a one-hot-vector.
 
-**Description:** This model was trained with a total of 36k quotes. This is because all quotes that were multi-sentence were dropped, as well as duplicate ones. After the input sequence was created, this sequence was split into 10 seperate chunks. The model was then trained 10 seperate times for 25 epochs, taking roughly ~15 minutes per chunk on a google colab GPU. Since the input was split into 10 parts, some chunks might end with an unfinished sentence while the next starts with one that's already half-completed. This should not be a problem since it only happens a max. of 10 times while training 36k quotes. Quotes were also not shuffled, not sure if that would make a difference.
+**Description:** This model was trained with a total of 36k quotes. This is because all quotes that were multi-sentence were dropped, as well as duplicate ones. After the input sequence was created, this sequence was split into 10 seperate chunks. The model was then trained 10 seperate times for 25 epochs, taking roughly ~15 minutes per chunk on a google colab GPU. Since the input was split into 10 parts, some chunks might end with an unfinished sentence while the next starts with one that's already half-completed. This should not be a problem since it only happens a max. of 10 times while training 36k quotes. Quotes were also not shuffled, not sure if that would make a difference. 
+
+What is also worth pointing out is that this generator basically just generates long pieces of text, based on an input of how long you want the text to be.
+It might be an idea to use a grammar-checker on the generated piece of text until we find the most grammatically correct sentence inside of our long text string.
 
 
 **Notes:** Training chunks in a for-loop gives memory crashes, even when clearing all used variables. Training a model in chunks like this required a bunch of manual resets of the notebook. If we cannot find a way around this then char-based models might be much easier to train.
