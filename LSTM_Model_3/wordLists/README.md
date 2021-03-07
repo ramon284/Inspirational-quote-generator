@@ -7,3 +7,6 @@ Example: "Be good to people for no reason an the." -> "Be good to people for no 
 
 The other text files here represent categories, and contain starting words for each category. This makes it easy to choose what kind of quote you want to generate. 
 Currently the model randomly selects a file and then randomly picks a word inside this file to start a quote. You can also easily give a user the option to choose a category.
+
+"startingWords" are words like "while", "the" "in case of" etc. which a sentence can start with.
+There is a small chance that these get used and get put infront of the topical word. So for example "war" could become "in case of war" or "the war" as a start of our quote.
