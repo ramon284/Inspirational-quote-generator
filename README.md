@@ -57,3 +57,41 @@ Tutorial: [Kaggle Beginners Text Generation](https://www.kaggle.com/shivamb/begi
 Total params: 3,824,505
 Trainable params: 3,824,505
 Non-trainable params: 0
+
+
+## [Model 3](LSTM_Model_3/LSTM-model-3.ipynb)
+Tutorial: [Generating Quotes using LSTM](https://www.kaggle.com/hariharanhd/generating-quotes)
+
+**Language Representation:** Tokenization of words. Uses the current sentence as input, next word as label which is a one-hot-vector.
+
+**Description:** This model was trained with a total of 36k quotes. This is because all quotes that were multi-sentence were dropped, as well as duplicate ones. After the input sequence was created, this sequence was split into 10 seperate chunks. The model was then trained 10 seperate times for 25 epochs, taking roughly ~15 minutes per chunk on a google colab GPU. Since the input was split into 10 parts, some chunks might end with an unfinished sentence while the next starts with one that's already half-completed. This should not be a problem since it only happens a max. of 10 times while training 36k quotes. Quotes were also not shuffled, not sure if that would make a difference.
+
+
+**Notes:** Training chunks in a for-loop gives memory crashes, even when clearing all used variables. Training a model in chunks like this required a bunch of manual resets of the notebook. If we cannot find a way around this then char-based models might be much easier to train.
+
+**Some Predictions:** Here, model 2 is the fully trained one, whereas model 1 is trained on a smaller dataset.
+
+| Model | Quote |
+|---------|---------------------------------------------------------------------------------|
+| Model 1 | Time in the see want to not wise we the very tender and will poet of. |     
+| Model 2 | Time is the truth that is the truth that all the time is the most important to. |
+| Model 1 | Friendship on one not a become cool man of quite a become way of from more programming a adore reach be.|
+| Model 2 | Friendship is a fool to know the truth and another is not a fool to know the truth and yet he.|
+| Model 1 | Passion while not the gathering defend and ourselves to also a architecture disappointment in that modern in I the secret and the almost and.|
+| Model 2 | Passion is a weapon of the war of fighting vanguard has created in its war and customers and advanced technology and the same tasks.|
+
+**Model Summary:**
+
+|Layer (type)     |            Output Shape |             Param #   |
+| ------------- |:-------------:| -----:|
+embedding (Embedding) | (None, 80, 64) | 1549568 |
+lstm (LSTM) | (None, 64) |  33024 |
+dense (Dense) | (None, 24212) | 1573780 |
+
+
+Total params: 3,156,372
+
+Trainable params: 3,156,372
+
+Non-trainable params: 0
+
