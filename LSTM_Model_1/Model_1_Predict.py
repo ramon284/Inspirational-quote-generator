@@ -227,7 +227,7 @@ one_step_model = OneStep(model, chars_from_ids, ids_from_chars)
 
 start = time.time()
 states = None
-next_char = tf.constant(['Democracy is'])
+next_char = tf.constant(['The true meaning of '])
 result = [next_char]
 
 for n in range(5000):
