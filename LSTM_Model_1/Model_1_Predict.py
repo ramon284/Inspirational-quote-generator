@@ -8,7 +8,7 @@ import time
 
 
 # Read, then decode for py2 compat.
-text = open("/Users/sethvanderbijl/Quote_Generation/MachineLearningVu/Data/Temp Data/quotes_only_text.txt", 'rb').read().decode(encoding='utf-8')
+text = open("/Users/sethvanderbijl/Coding Projects/MachineLearningVu/Data/Temp Data/quotes_only_text.txt", 'rb').read().decode(encoding='utf-8')
 text = text.replace("\n", "   ")
 # length of text is the number of characters in it
 print('Length of text: {} characters'.format(len(text)))
@@ -167,7 +167,7 @@ tf.exp(mean_loss).numpy()
 model.compile(optimizer='adam', loss=loss)
 
 # Directory where the checkpoints will be saved
-checkpoint_dir = './training_checkpoints'
+checkpoint_dir = '/Users/sethvanderbijl/Coding Projects/MachineLearningVu/LSTM_Model_1/checkpoints'
 # Name of the checkpoint files
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
@@ -227,10 +227,10 @@ one_step_model = OneStep(model, chars_from_ids, ids_from_chars)
 
 start = time.time()
 states = None
-next_char = tf.constant(['ROMEO:'])
+next_char = tf.constant(['Democracy is'])
 result = [next_char]
 
-for n in range(1000):
+for n in range(5000):
   next_char, states = one_step_model.generate_one_step(next_char, states=states)
   result.append(next_char)
 
